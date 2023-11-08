@@ -117,3 +117,8 @@ setInterval(updateTime, 1000);
 
 // Call updateTime once immediately to display the time upon page load
 updateTime();
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
