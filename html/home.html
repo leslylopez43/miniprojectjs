@@ -12,13 +12,36 @@
         <h1>Math Game</h1>
         <p>Enter your gamer name:</p>
         <!-- Input box for the gamer's name -->
-        <input type="text" id="gamerName" placeholder="Enter your name">
-        <p>Choose an option:</p>
-        <button id="easy">Easy</button>
-<button id="hard">Hard</button>
+        <input type="text" id="gamerName" placeholder="Enter your gamer name">
 
-        <a href="easy.html">Easy</a>
-        <a href="hard.html">Hard</a>
+        <!-- Button to start the game -->
+        <button id="startButton">Start Game</button>
+        <script>
+            const gamerNameInput = document.getElementById("gamerName");
+            
+            const startButton = document.getElementById("startButton");
+
+        
+            gamerNameInput.addEventListener("input", function() {
+                const gamerName = gamerNameInput.value;
+                document.querySelector(".container1 h1").innerHTML = `Hello Genuis Math, ${gamerName}!`;
+            });
+            gamerNameInput.addEventListener("keypress", function(event) {
+  if (event.key === 'Enter') {
+    event.preventDefault();
+    const gamerName = gamerNameInput.value;
+    document.querySelector(".container1 h1").innerHTML = `Hello, ${gamerName}!`;
+    // Example: Start the game by navigating to 'game.html'
+    window.location.href = "../index.html"; // Replace 'game.html' with the filename of your game
+  }
+});
+            startButton.addEventListener("click", function() {
+                const gamerName = gamerNameInput.value;
+                document.querySelector(".container1 h1").innerHTML = `Hello, ${gamerName}!`;
+                window.location.href = "../index.html"; // Replace 'index.html' with the filename of your game index
+            });
+        </script>
     </div>
 </body>
+<script src="/js/javascript.js"></script>
 </html>

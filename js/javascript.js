@@ -123,103 +123,29 @@ app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
 
-// redirect to easy.html
-document.querySelector('a[href="easy.html"]').addEventListener('click', function(event) {
+
+const gamerNameInput = document.getElementById("gamerName");
+const startButton = document.getElementById("startButton");
+
+gamerNameInput.addEventListener("keypress", function(event) {
+  if (event.key === 'Enter') {
     event.preventDefault();
-    window.location.href = 'easy.html';
+    const gamerName = gamerNameInput.value;
+    document.querySelector(".container1 h1").innerHTML = `Hello, ${gamerName}!`;
+    // Example: Start the game by navigating to 'game.html'
+    window.location.href = "game.html"; // Replace 'game.html' with the filename of your game
+  }
 });
 
-// redirect to hard.html
-document.querySelector('a[href="hard.html"]').addEventListener('click', function(event) {
-    event.preventDefault();
-    window.location.href = 'hard.html';
+startButton.addEventListener("click", function() {
+  const gamerName = gamerNameInput.value;
+  document.querySelector(".container1 h1").innerHTML = `Hello, ${gamerName}!`;
+  // Example: Start the game by navigating to 'game.html'
+  window.location.href = "game.html"; // Replace 'game.html' with the filename of your game
 });
 
-var level = 1; // current level (1 for easy, 2 for hard)
+// Get the gamer's name from the previous page
+const gamerName = sessionStorage.getItem("gamerName");
 
-document.getElementById("easy").onclick = function() {
-    level = 1;
-    // reset the game
-};
-
-document.getElementById("hard").onclick = function() {
-    level = 2;
-    // reset the game
-};
-
-// easy level
-if (level == 1) {
-    var x = 1 + Math.round(9 * Math.random());
-    var y = 1 + Math.round(9 * Math.random());
-    correctAnswer = x * y;
-    document.getElementById("question").innerHTML = x + "x" + y;
-    var correctPosition = 1 + Math.round(3 * Math.random());
-    document.getElementById("box" + correctPosition).innerHTML = correctAnswer;
-    var answers = [correctAnswer];
-
-    for (var i = 1; i < 5; i++) {
-        if (i != correctPosition) {
-            var wrongAnswer;
-            do {
-                wrongAnswer = (1 + Math.round(9 * Math.random())) * (1 + Math.round(9 * Math.random()));
-            } while (answers.indexOf(wrongAnswer) > -1);
-            document.getElementById("box" + i).innerHTML = wrongAnswer;
-            answers.push(wrongAnswer);
-        }
-    }
-}
-
-// hard level
-if (level == 2) {
-    var x = 1 + Math.round(15 * Math.random());
-    var y = 1 + Math.round(15 * Math.random());
-    correctAnswer = x * y;
-    document.getElementById("question").innerHTML = x + "x" + y;
-    var correctPosition = 1 + Math.round(4 * Math.random());
-    document.getElementById("box" + correctPosition).innerHTML = correctAnswer;
-    var answers = [correctAnswer];
-
-    for (var i = 1; i < 5; i++) {
-        if (i != correctPosition) {
-            var wrongAnswer;
-            do {
-                wrongAnswer = (1 + Math.round(15 * Math.random())) * (1 + Math.round(15 * Math.random()));
-            } while (answers.indexOf(wrongAnswer) > -1);
-            document.getElementById("box" + i).innerHTML = wrongAnswer;
-            answers.push(wrongAnswer);
-        }
-    }
-}
-
-// check the answer
-if (this.innerHTML == correctAnswer) {
-    if (level == 1) {
-        score++;
-        document.getElementById("scorevalue").innerHTML = score;
-        setTimeout(function() {
-            generateQA();
-        }, 1000);
-    } else if (level == 2) {
-        score += 2;
-        document.getElementById("scorevalue").innerHTML = score;
-        setTimeout(function() {
-            generateQA();
-        }, 1000);
-    }
-} else {
-    setTimeout(function() {
-        generateQA();
-    }, 1000);
-}
-
-// redirect to easy.html
-document.querySelector('a[href="easy.html"]').addEventListener('click', function(event) {
-    event.preventDefault();
-    window.location.href = 'easy.html';
-});
-
-// redirect to hard.html
-document.querySelector('a[href="hard.html"]').addEventListener('click', function(event) {
-    event.preventDefault();
-    window.location.href = 'hard.html';
-});
+// Display the gamer's name on the index page
+document.querySelector(".container1 h1").innerHTML = `Hello, ${gamerName}!`;
