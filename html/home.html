@@ -8,43 +8,52 @@
     <title>Math Game</title>
     <style>
         body {
-            background-color: rgb(229, 239, 246);
-            background-image: url('/img/Screenshot 2023-11-09 at 20.43.04.png');
-            background-size: 60%;
-            background-position: center bottom;
-            background-repeat: no-repeat;
-            min-height: 100vh;
-        }
+    background-color: rgb(229, 239, 246);
+    background-image: url('/img/Screenshot 2023-11-09 at 20.43.04.png');
+    background-size: 50%;
+    position: relative;
+    z-index: -1;
+    min-height: 100vh;
+    opacity: 0.7; /* Adjust the opacity level to make the background less intense */  
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+    
         p {
-            font-size: 120px;
-            font-weight: 90;
+            font-size: 36px;
+            font-weight: bold;
             color: rgb(207, 49, 49);
-            margin-top: 250px;
-            text-align: right; /* Corrected property name */
+            margin-bottom: 20px;
         }
+    
         h1 {
-            margin-top: 1%;
-            font-size: 60px;
-            font-weight: 80;
+            font-size: 48px;
+            font-weight: bold;
             color: rgb(24, 50, 38);
-            margin-left: 900px;
-            text-align: center; /* Adjusted text alignment */
+            margin-bottom: 20px;
         }
-        input {
-            font-size: 40px;
-            font-weight: 10;
-            color: rgb(24, 50, 38);
-            margin-left: 190px;
-            margin-bottom: 5px;
-        }
+    
+        input,
         button {
-            font-size: 40px;
-            font-weight: 10;
+            padding: 10px;
+            font-size: 20px;
+            font-weight: normal;
             color: rgb(24, 50, 38);
-            margin-left: 190px;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    
+        button {
+            cursor: pointer;
+            background-color: #eee;
         }
     </style>
+    
     
 </head>
 <body >    <div class="container1">
@@ -57,27 +66,31 @@
         <button id="startButton">Start Game</button>
         <script>
             const gamerNameInput = document.getElementById("gamerName");
-            const startButton = document.getElementById("startButton");
-        
-            gamerNameInput.addEventListener("input", function() {
-                const gamerName = gamerNameInput.value;
-                document.querySelector(".container1 h1").innerHTML = `Hello Genuis Math, ${gamerName}!`;
-            });
-        
-            gamerNameInput.addEventListener("keypress", function(event) {
-                if (event.key === 'Enter') {
-                    event.preventDefault();
-                    const gamerName = gamerNameInput.value;
-                    sessionStorage.setItem("gamerName", gamerName); // Store the name in sessionStorage
-                    window.location.href = "../index.html"; // Redirect to the index page
-                }
-            });
-        
-            startButton.addEventListener("click", function() {
-                const gamerName = gamerNameInput.value;
-                sessionStorage.setItem("gamerName", gamerName); // Store the name in sessionStorage
-                window.location.href = "../index.html"; // Redirect to the index page
-            });
+const startButton = document.getElementById("startButton");
+
+gamerNameInput.addEventListener("input", function() {
+    const gamerName = gamerNameInput.value;
+    document.querySelector(".container1 h1").innerHTML = `Hello Genuis Math, ${gamerName}!`;
+});
+
+gamerNameInput.addEventListener("keypress", function(event) {
+    if (event.key === 'Enter') {
+        const gamerName = gamerNameInput.value;
+        if (gamerName.trim() !== '') {
+            sessionStorage.setItem("gamerName", gamerName);
+            window.location.href = "../index.html"; // Redirect to the index page
+        }
+    }
+});
+
+startButton.addEventListener("click", function() {
+    const gamerName = gamerNameInput.value;
+    if (gamerName.trim() !== '') {
+        sessionStorage.setItem("gamerName", gamerName);
+        window.location.href = "../index.html"; // Redirect to the index page
+    }
+});
+
         </script>
         
     </div>
