@@ -21,6 +21,10 @@
 
             </div>
     </div>
+    <div class="container1">
+        <h1>Genuis, Gamer!</h1>
+        <!-- Other content if any -->
+    </div>
         <div id="container">
             <div id="timeremaining">
                 Time remaining: <span id="timeremainingvalue"> 60</span>
@@ -63,11 +67,15 @@
     <script src="/js/javascript.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            const gamerName = sessionStorage.getItem("gamerName");
-            if (gamerName) {
-                document.querySelector(".container1 h1").innerHTML = `Hello, ${gamerName}!`;
-            }
-        });
+    const gamerName = sessionStorage.getItem("gamerName");
+    if (gamerName) {
+        const element = document.querySelector(".container1 h1");
+        element.innerHTML = `Hello Genuis, ${gamerName}!`;
+        element.style.color = "blue"; // Change the color to red
+        element.style.textAlign = "center";
+    }
+    });
+
     </script>
     
       
