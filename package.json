@@ -1,0 +1,18 @@
+{
+    "name": "your-app-miniprojectjs",
+    "version": "1.0.0",
+    "description": "Your application description",
+    "main": "app.js",
+    "scripts": {
+      "start": "node app.js"
+    },
+    "engines": {
+      "node": "14.x"
+    },
+    "dependencies": {
+      "express": "^4.17.1",
+      "mongoose": "^5.12.7"
+      
+    }
+  }
+  
