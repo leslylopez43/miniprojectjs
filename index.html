@@ -4,96 +4,83 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/style.cs">
+    <link rel="stylesheet" href="/css/style.css">
     <title>Math Game</title>
-    <style>
-        body {
-    background-color: rgb(229, 239, 246);
-    background-image: url('/img/Screenshot 2023-11-09 at 20.43.04.png');
-    background-size: 50%;
-    position: relative;
-    z-index: -1;
-    min-height: 100vh;
-    opacity: 0.7; /* Adjust the opacity level to make the background less intense */  
-    background-position: center;
-    background-repeat: no-repeat;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-
-    
-        p {
-            font-size: 36px;
-            font-weight: bold;
-            color: rgb(207, 49, 49);
-            margin-bottom: 20px;
-        }
-    
-        h1 {
-            font-size: 48px;
-            font-weight: bold;
-            color: rgb(24, 50, 38);
-            margin-bottom: 20px;
-        }
-    
-        input,
-        button {
-            padding: 10px;
-            font-size: 20px;
-            font-weight: normal;
-            color: rgb(24, 50, 38);
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-    
-        button {
-            cursor: pointer;
-            background-color: #eee;
-        }
-    </style>
-    
-    
 </head>
-<body >    <div class="container1">
-        <h1> Get Fun</h1>
-        <p>Gamer name:</p>
-        <!-- Input box for the gamer's name -->
-        <input type="text" id="gamerName" placeholder="Enter your gamer name">
-
-        <!-- Button to start the game -->
-        <button id="startButton">Start Game</button>
-        <script>
-            const gamerNameInput = document.getElementById("gamerName");
-const startButton = document.getElementById("startButton");
-
-gamerNameInput.addEventListener("input", function() {
-    const gamerName = gamerNameInput.value;
-    document.querySelector(".container1 h1").innerHTML = `Hello Genuis Math, ${gamerName}!`;
-});
-
-gamerNameInput.addEventListener("keypress", function(event) {
-    if (event.key === 'Enter') {
-        const gamerName = gamerNameInput.value;
-        if (gamerName.trim() !== '') {
-            sessionStorage.setItem("gamerName", gamerName);
-            window.location.href = "../index.html"; // Redirect to the index page
-        }
-    }
-});
-
-startButton.addEventListener("click", function() {
-    const gamerName = gamerNameInput.value;
-    if (gamerName.trim() !== '') {
-        sessionStorage.setItem("gamerName", gamerName);
-        window.location.href = "../index.html"; // Redirect to the index page
-    }
-});
-
-        </script>
+<body>
+    <div id="clock1"></div>
+    <div id="clock">
+        <div id="clock-face">
+            <div id="hand-hour" class="hand"></div>
+            <div id="hand-minute" class="hand"></div>
+            <div id="hand-second" class="hand"></div>
         
+        <div class="time"> 
+        </div>
+            <div id="date">
+
+            </div>
     </div>
+    <div class="container1">
+        <h1>Genuis, Gamer!</h1>
+        <!-- Other content if any -->
+    </div>
+        <div id="container">
+            <div id="timeremaining">
+                Time remaining: <span id="timeremainingvalue"> 60</span>
+            </div>
+            <div id="score">
+                score: <span id="scorevalue" style="font-weight: 900">0</span>
+            </div>
+            <div id="correct">
+                Correct!
+            </div>
+            <div id="wrong">
+                Try again!
+            </div>
+            <div id="question">
+        
+            </div>
+            <div id="instruction">
+                Click on the correct answer.
+            </div>
+            <div id="choices">
+        
+                <div id="box1" class="box"> </div>
+                <div id="box2" class="box"> </div>
+                <div id="box3" class="box"> </div>
+                <div id="box4" class="box"> </div>
+            </div>
+            <div id="startreset">
+                Start Game
+
+            </div>
+            <a class="homelink" href="javascript:void(0)" onclick="window.location.href='../html/home.html'">Home</a>
+            <div id="gameOver">
+                
+            </div>
+        </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.3.js"
+        integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+        
+    <script src="/js/javascript.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+    const gamerName = sessionStorage.getItem("gamerName");
+    if (gamerName) {
+        const element = document.querySelector(".container1 h1");
+        element.innerHTML = `Hello Genuis, ${gamerName}!`;
+        element.style.color = "blue"; // Change the color to red
+        element.style.textAlign = "center";
+    }
+    });
+
+    </script>
+    
+      
 </body>
-<script src="/js/javascript.js"></script>
+
+</html>
+</body>
 </html>
